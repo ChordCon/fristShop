@@ -1,32 +1,42 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { Routes, Route, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const NavbarF = () => {
+  let navigate = useNavigate();
+
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">
-          <Link to="/" className="nav-link">
-            Chord shoes
-          </Link>
+        <Navbar.Brand
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Chord shoes
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#home">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
+          <Nav.Link
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Home
           </Nav.Link>
-          <Nav.Link href="#Detail">
-            <Link to="/detail" className="nav-link">
-              Detail
-            </Link>
-          </Nav.Link>
-          <Nav.Link href="#Login">
-            <Link to="/Login" className="nav-link">
-              Login
-            </Link>
+          {/* <Nav.Link
+            onClick={() => {
+              navigate("/detail");
+            }}
+          >
+            Detail
+          </Nav.Link> */}
+          <Nav.Link
+            onClick={() => {
+              navigate("/event");
+            }}
+          >
+            Event
           </Nav.Link>
         </Nav>
       </Container>
