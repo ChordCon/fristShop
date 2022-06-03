@@ -21,3 +21,21 @@
 .container .num-input {
   margin-bottom: 10px;
 }
+
+.more-button {
+  margin: 10px;
+  text-align: center;
+}
+
+.tab-btn {
+  margin: 10px 10px 0 10px;
+}
+
+.tab-container {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: #bbd0f1;
+}

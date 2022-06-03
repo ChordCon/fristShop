@@ -5,11 +5,13 @@ import GoodsList from "./GoodsList";
 import NavbarF from "./Nav-bar";
 import Detail from "./pages/detail";
 import Event from "./pages/event";
-import { Routes, Route, Link, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import date from "./data";
+import axios from "axios";
+// import { Button } from "bootstrap";
 
 function App() {
-  let [shoes] = useState(date);
+  let [shoes, setShoes] = useState(date);
   let [mapNum, setMapNum] = useState(0);
 
   return (
@@ -23,7 +25,6 @@ function App() {
           element={
             <>
               <div className="main-bg"></div>
-
               <div className="container">
                 <div className="row">
                   {/*GoodsList에 상품정보가 들어있습니다. */}
@@ -33,6 +34,28 @@ function App() {
                     setMapNum={setMapNum}
                   />
                 </div>
+              </div>
+              <div className="more-button">
+                <button
+                  onClick={() => {
+                    axios
+
+                      .get("https://codingapple1.github.io/shop/data2.json")
+
+                      .then((result) => {
+                        let copy = [...shoes, ...result.data];
+                        setShoes(copy);
+                        console.log(copy);
+                      })
+
+                      .catch(() => {
+                        alert("서버와 통신할 수 없습니다.");
+                      });
+                  }}
+                >
+                  더 보기
+                  <Outlet />{" "}
+                </button>
               </div>
             </>
           }
