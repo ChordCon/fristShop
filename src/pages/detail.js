@@ -3,8 +3,15 @@ import { Nav } from "react-bootstrap";
 
 const Detail = (props) => {
   let [Ealert, setAlert] = useState(true);
-
   let [tab, setTab] = useState(0);
+  let [fade, setFade] = useState("");
+  let [detailFade, setDetailFade] = useState();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDetailFade("detailEnd");
+    }, 100);
+  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -12,8 +19,18 @@ const Detail = (props) => {
     }, 2000);
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setFade("end");
+    }, 100);
+
+    return () => {
+      setFade("");
+    };
+  }, [tab]);
+
   return (
-    <div className="container">
+    <div className={`container detailStart ${detailFade}`}>
       {Ealert === true ? (
         <div className="discount">할인 쿠폰 받으로 가기</div>
       ) : null}
@@ -69,13 +86,15 @@ const Detail = (props) => {
               </Nav.Link>
             </Nav.Item>
           </Nav>
-          {tab === 1 ? (
-            <div>내용2</div>
-          ) : tab === 2 ? (
-            <div>내용3</div>
-          ) : (
-            <div>내용1</div>
-          )}
+          <div className={`start ${fade}`}>
+            {tab === 1 ? (
+              <div>내용2</div>
+            ) : tab === 2 ? (
+              <div>내용3</div>
+            ) : tab === 0 ? (
+              <div>내용1</div>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

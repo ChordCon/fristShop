@@ -39,3 +39,21 @@
   border-radius: 10px;
   background-color: #bbd0f1;
 }
+
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.detailStart {
+  opacity: 0;
+}
+
+.detailEnd {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
