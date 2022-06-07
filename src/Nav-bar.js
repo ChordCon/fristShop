@@ -24,13 +24,13 @@ const NavbarF = () => {
           >
             Home
           </Nav.Link>
-          {/* <Nav.Link
+          <Nav.Link
             onClick={() => {
-              navigate("/detail");
+              navigate("/cart");
             }}
           >
-            Detail
-          </Nav.Link> */}
+            Cart
+          </Nav.Link>
           <Nav.Link
             onClick={() => {
               navigate("/event");
