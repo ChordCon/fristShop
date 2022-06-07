@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addItem } from "../store";
 
 const Detail = (props) => {
   let [Ealert, setAlert] = useState(true);
@@ -29,6 +31,8 @@ const Detail = (props) => {
     };
   }, [tab]);
 
+  let dispatch = useDispatch();
+
   return (
     <div className={`container detailStart ${detailFade}`}>
       {Ealert === true ? (
@@ -39,6 +43,7 @@ const Detail = (props) => {
           <img
             src={process.env.PUBLIC_URL + `/img/shoes${props.mapNum + 1}.jpg`}
             width="80%"
+            alt=""
           />
         </div>
 
@@ -47,7 +52,20 @@ const Detail = (props) => {
           <p>{props.shoes[props.mapNum].content}</p>
           <p>{props.shoes[props.mapNum].price} 원</p>
 
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              dispatch(
+                addItem({
+                  id: props.mapNum,
+                  name: props.shoes[props.mapNum].title,
+                  count: 1,
+                })
+              );
+            }}
+          >
+            주문하기
+          </button>
         </div>
 
         <div className="mid-nav" style={{ marginTop: "30px" }}>

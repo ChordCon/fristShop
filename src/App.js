@@ -8,7 +8,7 @@ import Event from "./pages/event";
 import { Routes, Route, Outlet } from "react-router-dom";
 import date from "./data";
 import axios from "axios";
-// import { Button } from "bootstrap";
+import Cart from "./pages/Cart";
 
 function App() {
   let [shoes, setShoes] = useState(date);
@@ -87,6 +87,7 @@ function App() {
             }
           />
         </Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
     </div>
   );

@@ -15,6 +15,7 @@ const GoodsList = (props) => {
         <img
           src={process.env.PUBLIC_URL + `/img/shoes${i + 1}.jpg`}
           width="80%"
+          alt=""
         />
         <h4>{props.shoes[i].title}</h4>
         <p>{props.shoes[i].price}</p>
