@@ -16,8 +16,6 @@ export let { changeName } = user.actions;
 let cart = createSlice({
   name: "cart",
   initialState: [
-    { id: 0, name: "White and Black", count: 2 },
-    { id: 2, name: "Grey Yordan", count: 1 },
   ],
   reducers: {
     addCount(state, action) {
@@ -27,8 +25,7 @@ let cart = createSlice({
     addItem(state, action) {
       let newItem = action.payload;
       let sameItem = state.findIndex((cart) => cart.id === newItem.id);
-      console.log(sameItem);
-
+      
       sameItem === -1 ? state.push(action.payload) : state[sameItem].count++;
     },
   },
