@@ -15,8 +15,12 @@ export let { changeName } = user.actions;
 
 let cart = createSlice({
   name: "cart",
+
+  initialState: [],
+
   initialState: [
   ],
+
   reducers: {
     addCount(state, action) {
       let idNum = state.findIndex((cart) => cart.id === action.payload);
