@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GoodsList from "./GoodsList";
 import NavbarF from "./Nav-bar";
 import Detail from "./pages/detail";
@@ -9,10 +9,12 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import date from "./data";
 import axios from "axios";
 import Cart from "./pages/Cart";
+import SideBar from "./SideBar";
 
 function App() {
   let [shoes, setShoes] = useState(date);
   let [mapNum, setMapNum] = useState(0);
+  let [latestItem, setLatestItem] = useState("");
 
   return (
     <div className="App">
@@ -32,6 +34,8 @@ function App() {
                     shoes={shoes}
                     mapNum={mapNum}
                     setMapNum={setMapNum}
+                    latestItem={latestItem}
+                    setLatestItem={setLatestItem}
                   />
                 </div>
               </div>
@@ -89,6 +93,8 @@ function App() {
         </Route>
         <Route path="/cart" element={<Cart />}></Route>
       </Routes>
+
+      <SideBar latestItem={latestItem} setLatestItem={setLatestItem} />
     </div>
   );
 }

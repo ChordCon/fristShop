@@ -10,6 +10,17 @@ const GoodsList = (props) => {
         onClick={() => {
           props.setMapNum(i);
           navigate("/detail");
+          let copy = [...props.latestItem];
+          copy.push(
+            <img
+              src={process.env.PUBLIC_URL + `/img/shoes${i + 1}.jpg`}
+              width="80%"
+              alt={i}
+              key={i}
+            />
+          );
+
+          props.setLatestItem(copy);
         }}
       >
         <img
