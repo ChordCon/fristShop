@@ -3,6 +3,8 @@
 }
 
 .main-bg {
+  position: relative;
+  z-index: -2;
   height: 300px;
   background-image: url("./img/bg.png");
   background-size: cover;
@@ -39,6 +41,9 @@
   border-radius: 10px;
   background-color: #bbd0f1;
 }
+.detail {
+  margin-right: 10%;
+}
 
 .start {
   opacity: 0;
@@ -58,13 +63,18 @@
   transition: opacity 0.5s;
 }
 
-.side-bar {
+.goods-list {
   display: flex;
-  justify-content: right;
+  margin-right: 10%;
+}
+.side-bar {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  height: 50%;
+  height: 40%;
   position: fixed;
-  top: 20px;
+  top: 45px;
   left: 0;
   right: 0;
 }

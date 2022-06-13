@@ -9,9 +9,11 @@ const GoodsList = (props) => {
         className="col-md-4"
         onClick={() => {
           props.setMapNum(i);
-          navigate("/detail");
+          navigate(`/detail${i}`);
+
           let copy = [...props.latestItem];
-          copy.push(
+
+          copy.unshift(
             <img
               src={process.env.PUBLIC_URL + `/img/shoes${i + 1}.jpg`}
               width="80%"
@@ -19,7 +21,6 @@ const GoodsList = (props) => {
               key={i}
             />
           );
-
           props.setLatestItem(copy);
         }}
       >

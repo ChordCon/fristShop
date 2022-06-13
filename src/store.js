@@ -24,7 +24,6 @@ let cart = createSlice({
     addItem(state, action) {
       let newItem = action.payload;
       let sameItem = state.findIndex((cart) => cart.id === newItem.id);
-      console.log(sameItem);
 
       sameItem === -1 ? state.push(action.payload) : state[sameItem].count++;
     },
