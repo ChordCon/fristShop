@@ -27,6 +27,14 @@ function App() {
           element={
             <>
               <div className="main-bg"></div>
+              <div className="side-bar">
+                <SideBar
+                  latestItem={latestItem}
+                  setLatestItem={setLatestItem}
+                  mapNum={mapNum}
+                  setMapNum={setMapNum}
+                />
+              </div>
               <div className="goods-list">
                 <div className="container">
                   <div className="row">
@@ -70,7 +78,17 @@ function App() {
         <Route
           path={`/detail${mapNum}`}
           element={
-            <Detail shoes={shoes} mapNum={mapNum} setMapNum={setMapNum} />
+            <>
+              <div className="side-bar">
+                <SideBar
+                  latestItem={latestItem}
+                  setLatestItem={setLatestItem}
+                  mapNum={mapNum}
+                  setMapNum={setMapNum}
+                />
+              </div>
+              <Detail shoes={shoes} mapNum={mapNum} setMapNum={setMapNum} />
+            </>
           }
         ></Route>
 
@@ -95,15 +113,6 @@ function App() {
         </Route>
         <Route path="/cart" element={<Cart />}></Route>
       </Routes>
-
-      <div className="side-bar">
-        <SideBar
-          latestItem={latestItem}
-          setLatestItem={setLatestItem}
-          mapNum={mapNum}
-          setMapNum={setMapNum}
-        />
-      </div>
     </div>
   );
 }
