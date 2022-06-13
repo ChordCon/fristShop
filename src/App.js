@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GoodsList from "./GoodsList";
 import NavbarF from "./Nav-bar";
 import Detail from "./pages/detail";
@@ -14,7 +14,7 @@ import SideBar from "./SideBar";
 function App() {
   let [shoes, setShoes] = useState(date);
   let [mapNum, setMapNum] = useState(0);
-  let [latestItem, setLatestItem] = useState("");
+  let [latestItem, setLatestItem] = useState([]);
 
   return (
     <div className="App">
@@ -27,16 +27,18 @@ function App() {
           element={
             <>
               <div className="main-bg"></div>
-              <div className="container">
-                <div className="row">
-                  {/*GoodsList에 상품정보가 들어있습니다. */}
-                  <GoodsList
-                    shoes={shoes}
-                    mapNum={mapNum}
-                    setMapNum={setMapNum}
-                    latestItem={latestItem}
-                    setLatestItem={setLatestItem}
-                  />
+              <div className="goods-list">
+                <div className="container">
+                  <div className="row">
+                    {/*GoodsList에 상품정보가 들어있습니다. */}
+                    <GoodsList
+                      shoes={shoes}
+                      mapNum={mapNum}
+                      setMapNum={setMapNum}
+                      latestItem={latestItem}
+                      setLatestItem={setLatestItem}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="more-button">
@@ -66,7 +68,7 @@ function App() {
         ></Route>
         {/* 상품 디테일 페이지 */}
         <Route
-          path="/detail"
+          path={`/detail${mapNum}`}
           element={
             <Detail shoes={shoes} mapNum={mapNum} setMapNum={setMapNum} />
           }
@@ -94,7 +96,14 @@ function App() {
         <Route path="/cart" element={<Cart />}></Route>
       </Routes>
 
-      <SideBar latestItem={latestItem} setLatestItem={setLatestItem} />
+      <div className="side-bar">
+        <SideBar
+          latestItem={latestItem}
+          setLatestItem={setLatestItem}
+          mapNum={mapNum}
+          setMapNum={setMapNum}
+        />
+      </div>
     </div>
   );
 }
